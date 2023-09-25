@@ -7,9 +7,10 @@ import { MainLayoutComponent } from './components/main-layout/main-layout.compon
 import { LoginComponent } from './pages/login/login.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveInputComponent } from './components/reactive-input/reactive-input.component';
 
 @NgModule({
-  declarations: [HomepageComponent, MainLayoutComponent, LoginComponent],
+  declarations: [HomepageComponent, MainLayoutComponent, LoginComponent, ReactiveInputComponent],
   imports: [CommonModule, SharedRoutingModule, TranslateModule,FormsModule,ReactiveFormsModule],
   exports: [MainLayoutComponent], // dış modüllerin kullanabileceği, dışarıya export edilen modüller
 })
