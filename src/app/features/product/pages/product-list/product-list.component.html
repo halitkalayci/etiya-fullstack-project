@@ -10,6 +10,7 @@
         [description]="'STOK: ' + product.unitsInStock"
         [price]="product.unitPrice"
         [id]="product.id"
+        (onDelete)="fetchProducts()"
       ></app-product-card>
     </div>
   </div>
