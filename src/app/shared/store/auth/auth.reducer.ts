@@ -2,7 +2,14 @@ import { createReducer, on } from '@ngrx/store';
 import { login, logout } from './auth.actions';
 import { LoggedInUserModel } from '../../models/loggedInUserModel';
 
-const initialState = { isAuthenticated: false, user: {} };
+const getInitialAuthState = () => {
+  if (localStorage.getItem('token')) {
+    return { isAuthenticated: true, user: { username: 'etiyaakadaemi' } }; // jwt'den alınır..
+  }
+  return { isAuthenticated: false, user: {} };
+};
+
+const initialState = getInitialAuthState();
 
 export const authReducer = createReducer(
   initialState,
@@ -13,4 +20,7 @@ export const authReducer = createReducer(
     return { isAuthenticated: false, user: {} };
   })
 );
+
 // State is immutable
+
+// token var mı? => isAuthenticated:true user:{}

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SharedState } from '../../store/shared.reducers';
 
 @Component({
   selector: 'app-main-layout',
@@ -9,10 +11,16 @@ import { NavigationStart, Router } from '@angular/router';
 export class MainLayoutComponent implements OnInit {
   layoutDisabledUrls: string[] = ['/login', '/register'];
   showLayout: boolean = true;
-
-  constructor(private router: Router) {}
+  authState: any;
+  constructor(private router: Router, private store: Store<SharedState>) {}
 
   ngOnInit(): void {
+    this.store
+      .select((x) => x.auth)
+      .subscribe((authState) => {
+        this.authState = authState;
+      });
+
     this.router.events.subscribe((value) => {
       if (value instanceof NavigationStart) {
         if (this.layoutDisabledUrls.includes(value.url)) {
