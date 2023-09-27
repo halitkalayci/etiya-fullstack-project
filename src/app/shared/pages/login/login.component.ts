@@ -6,6 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { SharedState } from '../../store/shared.reducers';
+import { login } from '../../store/auth/auth.actions';
 
 @Component({
   templateUrl: './login.component.html',
@@ -16,7 +19,11 @@ export class LoginComponent implements OnInit {
   // değişkenler-ctor-metotlar
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private store: Store<SharedState>
+  ) {}
 
   ngOnInit(): void {
     this.buildForm();
@@ -37,6 +44,13 @@ export class LoginComponent implements OnInit {
       return;
     }
     localStorage.setItem('token', 'Etiya');
+    this.store.dispatch(
+      login({
+        firstName: 'Etiya',
+        lastName: 'Akademi',
+        username: 'etiyaakademi',
+      })
+    );
     this.router.navigateByUrl('/');
   }
 }

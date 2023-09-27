@@ -47,11 +47,15 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
 
   handleValidationException(errorResponse: HttpErrorResponse) {
     let errorObj = errorResponse.error.error;
-    let errorMsg = '';
+    let errorMsg = '<ul>';
     Object.keys(errorObj).forEach((key) => {
-      errorMsg += `${key} alanında validasyon hatası: ${errorObj[key]} \n`;
+      errorMsg += `<li> ${key} alanında validasyon hatası: ${errorObj[key]} </li>`;
     });
-    this.toastrService.error(errorMsg);
+    errorMsg += '</ul>';
+    this.toastrService.error(errorMsg, 'Validasyon Hataları', {
+      enableHtml: true,
+      timeOut: 10000,
+    });
   }
 }
 // 10.00

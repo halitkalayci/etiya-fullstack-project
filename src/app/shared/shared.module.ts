@@ -9,6 +9,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveInputComponent } from './components/reactive-input/reactive-input.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { StoreModule } from '@ngrx/store';
+import { sharedReducers } from './store/shared.reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,8 @@ import { RegisterComponent } from './pages/register/register.component';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(sharedReducers),
+    StoreDevtoolsModule.instrument({ maxAge: 60 }),
   ],
   exports: [MainLayoutComponent, ReactiveInputComponent], // dış modüllerin kullanabileceği, dışarıya export edilen modüller
 })
