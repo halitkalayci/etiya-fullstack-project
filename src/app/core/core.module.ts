@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { OverlayLoadingComponent } from './components/overlay-loading/overlay-loading.component';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [OverlayLoadingComponent],
   imports: [CommonModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   exports: [OverlayLoadingComponent],
 })
