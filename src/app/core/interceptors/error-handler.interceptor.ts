@@ -7,10 +7,12 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ErrorHandlerInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private router: Router, private toastrService: ToastrService) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -20,7 +22,10 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
       catchError((error) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status == 401) {
-            // Auth Hatası
+            this.toastrService.error(
+              'Bu sayfaya erişmek için giriş yapmanız gerekmektedir.'
+            );
+            this.router.navigateByUrl('/login');
           }
           if (error.status == 400 || error.error == 'BusinessException') {
           }
@@ -32,3 +37,4 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     );
   }
 }
+// 10.00
