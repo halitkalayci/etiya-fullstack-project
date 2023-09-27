@@ -101,6 +101,8 @@ export class AddProductComponent implements OnInit {
         this.productToEdit?.category.categoryId || 0,
         [Validators.min(1)]
       ),
+      unitsInStock: new FormControl(0),
+      unitPrice: new FormControl(0),
     });
   }
 }

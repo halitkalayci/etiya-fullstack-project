@@ -26,20 +26,32 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
               'Bu sayfaya erişmek için giriş yapmanız gerekmektedir.'
             );
             this.router.navigateByUrl('/login');
-          }
-          switch (errorResponse.error.errorType) {
-            case 'BusinessException':
-              break;
-            case 'ValidationException':
-              break;
-            default:
-              this.toastrService.error('Bilinmedik hata');
-              break;
+          } else {
+            switch (errorResponse.error.errorType) {
+              case 'BusinessException':
+                this.toastrService.error(errorResponse.error.error);
+                break;
+              case 'ValidationException':
+                this.handleValidationException(errorResponse);
+                break;
+              default:
+                this.toastrService.error('Bilinmedik hata');
+                break;
+            }
           }
         }
         throw errorResponse;
       })
     );
+  }
+
+  handleValidationException(errorResponse: HttpErrorResponse) {
+    let errorObj = errorResponse.error.error;
+    let errorMsg = '';
+    Object.keys(errorObj).forEach((key) => {
+      errorMsg += `${key} alanında validasyon hatası: ${errorObj[key]} \n`;
+    });
+    this.toastrService.error(errorMsg);
   }
 }
 // 10.00

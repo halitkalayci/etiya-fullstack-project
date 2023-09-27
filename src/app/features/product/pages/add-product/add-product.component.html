@@ -8,6 +8,20 @@
       formControlName="productName"
     ></etiya-input>
 
+    <etiya-input
+      placeHolder="Ürün Fiyatı"
+      label="Ürün Fiyatı"
+      [formGroup]="addProductForm"
+      formControlName="unitPrice"
+    ></etiya-input>
+
+    <etiya-input
+      placeHolder="Ürün Stok"
+      label="Ürün Stok"
+      [formGroup]="addProductForm"
+      formControlName="unitsInStock"
+    ></etiya-input>
+
     <div class="form-group">
       <label>Kategori</label>
       <select
