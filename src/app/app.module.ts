@@ -12,7 +12,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { sharedReducers } from './shared/store/shared.reducers';
-
+import { NgIconsModule } from '@ng-icons/core';
+import { bootstrapBasket } from '@ng-icons/bootstrap-icons';
 @NgModule({
   declarations: [AppComponent],
   // Import ettiğim modüllerden sadece o modülün export ettiği alanları kullanabilirim.

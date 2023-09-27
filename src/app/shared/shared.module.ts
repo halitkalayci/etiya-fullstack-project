@@ -1,3 +1,4 @@
+import { bootstrapBasket } from '@ng-icons/bootstrap-icons';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,6 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { StoreModule } from '@ngrx/store';
 import { sharedReducers } from './store/shared.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgIconsModule } from '@ng-icons/core';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
+    NgIconsModule.withIcons({ bootstrapBasket }),
   ],
   exports: [MainLayoutComponent, ReactiveInputComponent], // dış modüllerin kullanabileceği, dışarıya export edilen modüller
 })

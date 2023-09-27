@@ -12,6 +12,7 @@ export class MainLayoutComponent implements OnInit {
   layoutDisabledUrls: string[] = ['/login', '/register'];
   showLayout: boolean = true;
   authState: any;
+  cart: any[] = [];
   constructor(private router: Router, private store: Store<SharedState>) {}
 
   ngOnInit(): void {
@@ -19,6 +20,12 @@ export class MainLayoutComponent implements OnInit {
       .select((x) => x.auth)
       .subscribe((authState) => {
         this.authState = authState;
+      });
+
+    this.store
+      .select((x) => x.cart)
+      .subscribe((cart) => {
+        this.cart = cart;
       });
 
     this.router.events.subscribe((value) => {

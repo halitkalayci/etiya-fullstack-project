@@ -43,9 +43,21 @@
             <a class="nav-link">Kayıt Ol</a>
           </li>
         </ul>
-        <p *ngIf="authState.isAuthenticated">
+        <div class="navbar-nav" *ngIf="authState.isAuthenticated">
+          <button
+            type="button"
+            class="btn btn-xs btn-primary position-relative mx-3"
+          >
+            <ng-icon name="bootstrapBasket" class=""></ng-icon>
+            <span
+              class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            >
+              {{ cart.length }}
+            </span>
+          </button>
+
           Hoşgeldiniz {{ authState.user.username }}
-        </p>
+        </div>
       </div>
     </div>
   </div>
