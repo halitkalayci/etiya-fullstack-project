@@ -19,20 +19,25 @@ export class ErrorHandlerInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
-      catchError((error) => {
-        if (error instanceof HttpErrorResponse) {
-          if (error.status == 401) {
+      catchError((errorResponse) => {
+        if (errorResponse instanceof HttpErrorResponse) {
+          if (errorResponse.status == 401) {
             this.toastrService.error(
               'Bu sayfaya erişmek için giriş yapmanız gerekmektedir.'
             );
             this.router.navigateByUrl('/login');
           }
-          if (error.status == 400 || error.error == 'BusinessException') {
-          }
-          if (error.status == 400 || error.error == 'ValidationException') {
+          switch (errorResponse.error.errorType) {
+            case 'BusinessException':
+              break;
+            case 'ValidationException':
+              break;
+            default:
+              this.toastrService.error('Bilinmedik hata');
+              break;
           }
         }
-        throw error;
+        throw errorResponse;
       })
     );
   }
