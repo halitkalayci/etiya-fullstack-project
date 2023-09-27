@@ -1,7 +1,12 @@
 import { createReducer, on } from '@ngrx/store';
 import { addItemToCart } from './cart.actions';
 
-const initialState: any[] = [];
+const getInitialCartState = (): any[] => {
+  let cart = localStorage.getItem('cart');
+  return cart ? JSON.parse(cart) : [];
+};
+
+const initialState: any[] = getInitialCartState();
 
 export const cartReducer = createReducer(
   initialState,
@@ -18,6 +23,7 @@ export const cartReducer = createReducer(
           quantity: existingCartItem.quantity + action.quantity,
         },
       ];
+      localStorage.setItem('cart', JSON.stringify(newState));
       return newState;
     } else {
       let newState = [
@@ -28,6 +34,7 @@ export const cartReducer = createReducer(
           quantity: action.quantity,
         },
       ];
+      localStorage.setItem('cart', JSON.stringify(newState));
       return newState;
     }
   })
