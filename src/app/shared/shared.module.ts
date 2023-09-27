@@ -27,8 +27,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     TranslateModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot(sharedReducers),
-    StoreDevtoolsModule.instrument({ maxAge: 60 }),
   ],
   exports: [MainLayoutComponent, ReactiveInputComponent], // dış modüllerin kullanabileceği, dışarıya export edilen modüller
 })
