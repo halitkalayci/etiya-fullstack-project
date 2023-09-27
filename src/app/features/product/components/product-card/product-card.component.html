@@ -6,7 +6,7 @@
       {{ description }}
     </p>
     <p>{{ price | currency : "₺" }}</p>
-    <a href="#" class="btn btn-primary">Sepete Ekle</a>
+    <a class="btn btn-primary" (click)="addToCart()">Sepete Ekle</a>
     <a class="btn btn-secondary mx-3" [routerLink]="'update/' + id">Düzenle</a>
     <a class="btn btn-danger" (click)="deleteProduct()">Sil</a>
   </div>
