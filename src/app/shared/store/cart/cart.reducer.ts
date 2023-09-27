@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { addItemToCart } from './cart.actions';
+import { addItemToCart, removeItemFromCart } from './cart.actions';
 
 const getInitialCartState = (): any[] => {
   let cart = localStorage.getItem('cart');
@@ -37,5 +37,10 @@ export const cartReducer = createReducer(
       localStorage.setItem('cart', JSON.stringify(newState));
       return newState;
     }
+  }),
+  on(removeItemFromCart, (state, action) => {
+    let newState = state.filter((s) => s.id != action.id);
+    localStorage.setItem('cart', JSON.stringify(newState));
+    return newState;
   })
 );
