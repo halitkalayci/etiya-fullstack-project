@@ -21,8 +21,12 @@
           <button (click)="remove(item)" class="btn btn-danger mx-2">
             Kaldır
           </button>
-          <button class="btn btn-primary mx-2">+</button>
-          <button class="btn btn-secondary mx-2">-</button>
+          <button (click)="increase(item)" class="btn btn-primary mx-2">
+            +
+          </button>
+          <button (click)="decrease(item)" class="btn btn-secondary mx-2">
+            -
+          </button>
         </td>
       </tr>
     </tbody>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { removeItemFromCart } from 'src/app/shared/store/cart/cart.actions';
+import {
+  addItemToCart,
+  removeItemFromCart,
+} from 'src/app/shared/store/cart/cart.actions';
 import { SharedState } from 'src/app/shared/store/shared.reducers';
 
 @Component({
@@ -20,5 +23,16 @@ export class SummaryComponent implements OnInit {
 
   remove(item: any) {
     this.store.dispatch(removeItemFromCart({ id: item.id }));
+  }
+  increase(item: any) {
+    this.store.dispatch(addItemToCart({ product: item.product, quantity: 1 }));
+  }
+  decrease(item: any) {
+    debugger;
+    if (item.quantity == 1) this.remove(item);
+    else
+      this.store.dispatch(
+        addItemToCart({ product: item.product, quantity: -1 })
+      );
   }
 }
