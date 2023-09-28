@@ -35,7 +35,7 @@ export class SignalsWorkshopComponent implements OnInit {
     effect(() => {
       console.log(`x değişkeninin mevcut değeri: ${this.x()}`);
     });
-    // 10:05
+
     //this.x.set(10);
     this.x.update((currentValue) => currentValue + 10);
 

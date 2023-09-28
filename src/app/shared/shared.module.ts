@@ -15,6 +15,7 @@ import { sharedReducers } from './store/shared.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgIconsModule } from '@ng-icons/core';
 import { SignalsWorkshopComponent } from './pages/signals-workshop/signals-workshop.component';
+import { SignalsFormComponent } from './pages/signals-form/signals-form.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SignalsWorkshopComponent } from './pages/signals-workshop/signals-works
     ReactiveInputComponent,
     RegisterComponent,
     SignalsWorkshopComponent,
+    SignalsFormComponent,
   ],
   imports: [
     CommonModule,
