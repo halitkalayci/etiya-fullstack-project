@@ -5,6 +5,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ErrorHandlerInterceptor } from './interceptors/error-handler.interceptor';
+import { LoadingService } from './services/loading.service';
 
 @NgModule({
   declarations: [OverlayLoadingComponent],
