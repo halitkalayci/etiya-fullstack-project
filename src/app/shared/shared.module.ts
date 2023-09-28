@@ -14,6 +14,7 @@ import { StoreModule } from '@ngrx/store';
 import { sharedReducers } from './store/shared.reducers';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgIconsModule } from '@ng-icons/core';
+import { SignalsWorkshopComponent } from './pages/signals-workshop/signals-workshop.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgIconsModule } from '@ng-icons/core';
     LoginComponent,
     ReactiveInputComponent,
     RegisterComponent,
+    SignalsWorkshopComponent,
   ],
   imports: [
     CommonModule,

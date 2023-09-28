@@ -39,3 +39,9 @@ export class MainLayoutComponent implements OnInit {
     });
   }
 }
+
+// Signals => Subject BehaviorSubject
+// DI (Service ProvidedIn)
+
+// ekstra
+// Socketio => Backend ve frontend arasında canlı veri akışı
