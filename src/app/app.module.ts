@@ -15,6 +15,11 @@ import { sharedReducers } from './shared/store/shared.reducers';
 import { NgIconsModule } from '@ng-icons/core';
 import { bootstrapBasket } from '@ng-icons/bootstrap-icons';
 import { SocketIoModule } from 'ngx-socket-io';
+import {
+  LAZYLOAD_IMAGE_HOOKS,
+  LazyLoadImageModule,
+  ScrollHooks,
+} from 'ng-lazyload-image';
 @NgModule({
   declarations: [AppComponent],
   // Import ettiğim modüllerden sadece o modülün export ettiği alanları kullanabilirim.
@@ -42,8 +47,9 @@ import { SocketIoModule } from 'ngx-socket-io';
       url: 'http://localhost:9000/',
       options: {},
     }),
+    LazyLoadImageModule,
   ],
-  providers: [],
+  providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'etiya-fullstack-project';
+  constructor() {}
 }
 
 // Rendering Sistemi
@@ -19,3 +20,5 @@ export class AppComponent {
 // SSR => Server Side Rendering => JS kodunu NODEJS tarafında sunucuda yorumla, ortaya çıkan HTML'i sunucuya gönder.
 
 // SEO => Search Engine Optimization
+
+// seo

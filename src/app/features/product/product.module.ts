@@ -7,6 +7,7 @@ import { ProductListComponent } from './pages/product-list/product-list.componen
 import { AddProductComponent } from './pages/add-product/add-product.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    LazyLoadImageModule,
   ],
 })
 export class ProductModule {}
